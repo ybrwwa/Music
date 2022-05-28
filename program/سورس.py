@@ -47,43 +47,8 @@ async def _human_time_duration(seconds):
     return ", ".join(parts)
 
 
-@Client.on_message(command2(["سورس","فحص"]))
-async def alive(client: Client, message: Message):
-    current_time = datetime.utcnow()
-    uptime_sec = (current_time - START_TIME).total_seconds()
-    uptime = await _human_time_duration(int(uptime_sec))
 
-    keyboard = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton("✨ كروب الدعم", url=f"https://t.me/{GROUP_SUPPORT}"),
-                InlineKeyboardButton(
-                    "قناة السورس", url=f"https://t.me/{UPDATES_CHANNEL}"
-                ),
-            ]
-        ]
-    )
-
-    alive = f"""**أنا {BOT_NAME}**
-✨ أعمل الأن بشكل طبيعي
-🍀 مطوري : [- سيف كوبرا️](https://t.me/QABNADLIB)
-✨ إصداري: {__version__}
-🍀 إصدار البايوجرام: {pyrover}
-✨ إصدار البايثون: {__python_version__}
-🍀 إصدار المحادثة الصوتيه: {pytover.__version__}
-✨ وقت البدء: {uptime}
-🤍 قناة السورس : [𝑆𝑂𝐔𝑅𝐶𝐸](https://t.me/VFF35)
-
-**شكرا لإضافتي لتشغيل الموسيقي والفديو في محادثتك الصوتية** ❤"""
-
-    await message.reply_photo(
-        photo=f"{ALIVE_IMG}",
-        caption=alive,
-        reply_markup=keyboard,
-    )
-
-
-@Client.on_message(command2(["بنك","السرعه","البنك","السرعة"]))
+@Client.on_message(command2(["بنج","السرعه","البنج","السرعة"]))
 async def ping_pong(client: Client, message: Message):
     start = time()
     m_reply = await message.reply_text("جاري قياس البنك...")
